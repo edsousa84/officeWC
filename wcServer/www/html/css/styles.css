@@ -1,0 +1,77 @@
+html {
+
+}
+
+body{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+    overflow-y: auto;
+}
+
+.background
+{
+    background: url('../images/sq_1.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.scrollable {
+    height: 300px !important;
+    overflow-y: auto;
+}
+
+.verticalSpacer10{
+    height: 10px;
+}
+
+.horizontalSpacer10{
+    width: 10px;
+}
+
+.verticalSpacer15{
+    height: 15px;
+}
+
+.verticalSpacer20{
+    height: 20px;
+}
+.horizontalSpacer20{
+    width: 20px;
+}
+
+.verticalSpacer25{
+    height: 25px;
+}
+.horizontalSpacer25{
+    width: 25px;
+}
+
+.verticalSpacer35{
+    height: 35px;
+}
+
+.panel-transparent {
+    /*background: none;*/
+}
+
+.panel-transparent{
+    background: rgba(223, 219, 255, 0.80) !important;
+
+}
+
+.colorPicker{
+    max-width: 160px;
+}
+
+#numberOfCharsArea{
+    color: rgba(49, 63, 69, 0.64);
+}

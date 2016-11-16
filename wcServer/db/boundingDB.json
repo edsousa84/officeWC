@@ -1,0 +1,25 @@
+{
+  "amgoncalves@fabamaq.com": {
+    "userMail": "amgoncalves@fabamaq.com",
+    "userName": "Americo Gonçalves",
+    "userNumber": 0,
+    "passwordMd5": "0a7d83f084ec258aefd128569dda03d7",
+    "team": "DEV"
+  },
+
+  "ana.santos@fabamaq.com": {
+    "userMail": "ana.santos@fabamaq.com",
+    "userName": "Ana Santos",
+    "userNumber": 1,
+    "passwordMd5": "6b27e88fdd7269394bca4968b48d8df4",
+    "team": "GPROJ"
+  },
+
+  "admin@fabamaq.com": {
+    "userMail": "admin@fabamaq.com",
+    "userName": "Administrator",
+    "userNumber": 65,
+    "passwordMd5": "81dc9bdb52d04dc20036dbd8313ed055",
+    "team": "HARDWARE"
+  }
+}

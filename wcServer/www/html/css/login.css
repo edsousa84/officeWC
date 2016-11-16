@@ -1,0 +1,11 @@
+.modal-header, h, .close {
+    color:white !important;
+    text-align: center;
+}
+.modal-footer {
+
+}
+
+.glyphicon_rightspacer {
+    padding-right: 5px;
+}

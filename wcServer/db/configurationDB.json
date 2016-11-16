@@ -1,0 +1,54 @@
+{
+  "0c:8b:fd:9b:a3:93": {
+    "iface": {
+      "1": {
+        "type": "sensor",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Sanita pequena"
+      }
+    }
+  },
+  "BA:BE:FA:CE:C0:0F": {
+    "iface": {
+      "1": {
+        "type": "sensor",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Sanita fundos"
+      }
+    }
+  },
+  "BA:AD:C0:FE:73:73": {
+    "iface": {
+      "1": {
+        "type": "sensor",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Mico 1"
+      },
+      "2": {
+        "type": "sensor",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Mico 2"
+      },
+      "3": {
+        "type": "sensor",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Mico 3"
+      }
+    }
+  }
+}

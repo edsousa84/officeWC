@@ -1,0 +1,8 @@
+.messageTableColorText{
+    /*padding-left: 25px*/
+}
+.messageTableColorSquare{
+    width:20px;
+    height: 20px;
+    border-radius: 5px;
+}
