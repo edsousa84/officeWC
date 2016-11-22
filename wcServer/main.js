@@ -28,47 +28,39 @@ app.on('error', function (err)
     res.status(500).send('Something broke!')
 });
 
-app.get('/*', function (req, res)
+app.get('/device/*', function (req, res)
 {
     try
     {
         //console.log("query: ",  req.query);
-        console.log("url: ",  req.url);
+        //console.log("url: ",  req.url);
 
         // Device request data frame:
-        // /device/[mac]/[interface]
+        // /device/[type]/[mac]/[interface]/[value]
 
         var url = req.url;
         var urlParts = url.split("/");
         //console.log(urlParts);
 
         var error = 'ERROR (uops dont know why but it is a error)';
+
+        var l = urlParts.length;
+        //console.log("Found " + l + " fields");
+
         //if any of the fields is empty (except none) return a error
-        if(urlParts.length != 5)
+        if( !(l == 6 || l == 5))
         {
-            error = 'ERROR no fields detected';
+            error = 'ERROR some fields were not detected. Must have 6 or 5 fields.' + ' Found ' + l + ' fields.';
             console.log(error);
             res.send(error);
         }
 
-        //var i = 1; //starts at one because of the first field is empty
-        for(var i = 1; i < 4 ; i++)
-        {
-            var part = urlParts[i];
-            if(part == "")
-            {
-                error = 'ERROR field number ' + i + ' is empty';
-                console.log(error);
-                res.send(error);
-                break;
-            }
-        }
-
         var none = urlParts[0]; //has nothing it is because of the first /
         var device = urlParts[1]; //must be "device"
-        var mac = urlParts[2]; //has the mac address of the device
-        var iface = urlParts[3]; // has the interface of the device
-        var value = urlParts[4]; // has the value of the device
+        var type = urlParts[2]; //must be "sensor" or "actuator"
+        var mac = urlParts[3]; //has the mac address of the device
+        var iface = urlParts[4]; // has the interface of the device
+        var value = urlParts[5]; // has the value of the device
 
         //if the device field is not "device" return error
         if(device != "device")
@@ -77,16 +69,73 @@ app.get('/*', function (req, res)
             console.log(error);
             res.send(error);
         }
-        //console.log("none: " + none + " | device: " + device + " | mac: " + mac + " | iface: " + iface + " | value: " + value);
+
+        //check if type is sensor or actuator
+        var part = "";
+        if(type == "sensor")
+        {
+            //If sensor must have the following req: /device/sensor/BA:AD:C0:FE:73:73/1
+            //                                       /device/sensor/[MAC]/[IFACE]/[VALUE]
+            //var i = 1; //starts at one because of the first field is empty
+            for(var i = 1; i < 4 ; i++)
+            {
+                part = urlParts[i];
+                if(part == "")
+                {
+                    error = 'ERROR field number ' + i + ' is empty';
+                    console.log(error);
+                    res.send(error);
+                    break;
+                }
+            }
+
+            configurationDB.setSensorValue(mac, iface, value);
+            var actuators = configurationDB.getActuatorsOfSensor(mac, iface);
+            configurationDB.setActuatorsValue(actuators, value);
+            console.log("Value " + value + " was read from sensor: " + mac + " on iface: " + iface);
+            res.send('OK');
+        }
+        else if(type == "actuator")
+        {
+            //If actuator must have the following req: /device/actuator/BA:AD:C0:FE:73:73/1
+            //                                         /device/sensor/[MAC]/[IFACE]
+            //var i = 1; //starts at one because of the first field is empty
+            //var j = 1; //starts at one because of the first field is empty
+            for(var j = 1; i < 4 ; i++)
+            {
+                part = urlParts[j];
+                if(part == "")
+                {
+                    error = 'ERROR field number ' + j + ' is empty';
+                    console.log(error);
+                    res.send(error);
+                    break;
+                }
+            }
+
+            var actuatorValue = configurationDB.getActuatorValue(mac, iface);
+            console.log("Actuator " + mac + " has the value: " + actuatorValue + " on iface: " + iface);
+
+            if (actuatorValue === undefined || actuatorValue === null)
+            {
+                error = 'ERROR actuator mac or iface does not exist';
+                console.log(error);
+                res.send(error);
+            }
+            else
+            {
+                //It is OK send the value in the response
+                res.send(actuatorValue);
+            }
 
 
-        //console.log(configurationDB);
-        //console.log(configurationDB.configuration);
-        //console.log(configurationDB.configuration['0c:8b:fd:9b:a3:93']);
-        //console.log(configurationDB[mac].iface);
-        //console.log(configurationDB.configuration[mac].iface[iface]);
-
-        console.log("Value " + value + " was read from device: " + mac + " on iface: " + iface);
+        }
+        else
+        {
+            error = 'ERROR field sensor or actuator not found';
+            console.log(error);
+            res.send(error);
+        }
     }
     catch(e)
     {
