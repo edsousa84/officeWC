@@ -7,7 +7,11 @@
         "value": "0",
         "lastcontime": "2016-11-2 15:30",
         "timeoutTime": "15000",
-        "local": "Sanita pequena"
+        "local": "Sanita pequena",
+        "actuators": [
+          {"mac": "0c:8b:fd:9b:a3:99", "iface": 1},
+          {"mac": "BA:AD:BA:BE:FA:CE", "iface": 1}
+        ]
       }
     }
   },
@@ -19,7 +23,11 @@
         "value": "0",
         "lastcontime": "2016-11-2 15:30",
         "timeoutTime": "15000",
-        "local": "Sanita fundos"
+        "local": "Sanita fundos",
+        "actuators": [
+          {"mac": "0c:8b:fd:9b:a3:00", "iface": 2},
+          {"mac": "BA:AD:BA:BE:FA:CE", "iface": 1}
+        ]
       }
     }
   },
@@ -31,7 +39,10 @@
         "value": "0",
         "lastcontime": "2016-11-2 15:30",
         "timeoutTime": "15000",
-        "local": "Mico 1"
+        "local": "Mico 1",
+        "actuators": [
+          {"mac": "BA:AD:BA:BE:FA:CE", "iface": 3}
+        ]
       },
       "2": {
         "type": "sensor",
@@ -39,7 +50,10 @@
         "value": "0",
         "lastcontime": "2016-11-2 15:30",
         "timeoutTime": "15000",
-        "local": "Mico 2"
+        "local": "Mico 2",
+        "actuators": [
+          {"mac": "BA:AD:BA:BE:FA:CE", "iface": 4}
+        ]
       },
       "3": {
         "type": "sensor",
@@ -47,8 +61,80 @@
         "value": "0",
         "lastcontime": "2016-11-2 15:30",
         "timeoutTime": "15000",
-        "local": "Mico 3"
+        "local": "Mico 3",
+        "actuators": [
+          {"mac": "BA:AD:BA:BE:FA:CE", "iface": 5}
+        ]
+      }
+    }
+  },
+  "0c:8b:fd:9b:a3:99": {
+    "iface": {
+      "1": {
+        "type": "actuator",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Trafic Ligth Corredor"
+      }
+    }
+  },
+  "0c:8b:fd:9b:a3:00": {
+    "iface": {
+      "1": {
+        "type": "actuator",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Trafic Ligth Pequena"
+      }
+    }
+  },
+  "BA:AD:BA:BE:FA:CE": {
+    "iface": {
+      "1": {
+        "type": "actuator",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Trafic Ligth General Fundos"
+      },
+      "2": {
+        "type": "actuator",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Trafic Ligth General Pequena"
+      },
+      "3": {
+        "type": "actuator",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Trafic Ligth General Mico 1"
+      },
+      "4": {
+        "type": "actuator",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Trafic Ligth General Mico 2"
+      },
+      "5": {
+        "type": "actuator",
+        "gpio": "digital",
+        "value": "0",
+        "lastcontime": "2016-11-2 15:30",
+        "timeoutTime": "15000",
+        "local": "Trafic Ligth General Mico 3"
       }
     }
   }
 }
+        
