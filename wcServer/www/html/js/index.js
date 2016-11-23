@@ -49,12 +49,98 @@ var showMainWindow = function()
 	$("#mainWindow").show();
 };
 
+var buildAreaLink = function(name)
+{
+    var link = "";
+    link = '<li class="">' +
+    '<a id="linkAllArea1" href="#">' + name + '<span class="sr-only">(current)</span></a>' +
+    '</li>';
+
+    $("#areaLinks").append(link);
+};
+
+var buildSensorAreaContent = function(name, value, gpioType,  numberOfSensors)
+{
+    console.log("name: " + name + " value: " + value + " numberOfSensors: " + numberOfSensors);
+
+    var sensor = "";
+
+    if(numberOfSensors % 3  === 0)
+    {
+        sensor = sensor +
+        '<div class="row">';
+    }
+
+    if(gpioType === "digital")
+    {
+        if(value == 1)
+        {
+            sensor = sensor +
+            '<div class="col-md-4">' +
+                '<div class="panel panel-danger">' +
+                    '<div class="panel-heading">' + name + '</div>' +
+                    '<div class="panel-body">Panel content default</div>' +
+                '</div>' +
+            '</div>';
+
+        }
+        else if(value == 0)
+        {
+            sensor = sensor +
+            '<div class="col-md-4">' +
+                '<div class="panel panel-success">' +
+                    '<div class="panel-heading">' + name + '</div>' +
+                    '<div class="panel-body">Panel content default</div>' +
+                '</div>' +
+            '</div>';
+        }
+        else
+        {
+            sensor = sensor +
+            '<div class="col-md-4">' +
+                '<div class="panel panel-info">' +
+                    '<div class="panel-heading">' + name + '</div>' +
+                    '<div class="panel-body">Panel content default</div>' +
+                '</div>' +
+            '</div>';
+        }
+
+        if(numberOfSensors % 3  === 0)
+        {
+            sensor = sensor +
+            '</div>';
+        }
+
+    }
+    $("#sensorAreaContent").append(sensor);
+};
+
 var buildGuiBasedOnServerConfiguration = function(configuration)
 {
-    console.log(configuration);
-    configuration["areas"].forEach(function(area){
-        console.log(area.name);
-    }.bind(this))
+    //console.log(configuration);
+    configuration.areas.forEach(function(area)
+    {
+        //console.log(area.name);
+        buildAreaLink(area.name);
+    }.bind(this));
+
+    var numberOfSensors = 0;
+    for (var mac in configuration.devices)
+    {
+        //console.log(key, configuration.devices[key]);
+        for (var iface in configuration.devices[mac].iface)
+        {
+            //console.log(iface, configuration.devices[mac].iface);
+            if(configuration.devices[mac].iface[iface].type === "sensor")
+            {
+                numberOfSensors = numberOfSensors +1;
+                var name = configuration.devices[mac].iface[iface].local;
+                var value = configuration.devices[mac].iface[iface].value;
+                var gpioType = configuration.devices[mac].iface[iface].gpio;
+                buildSensorAreaContent(name, value, gpioType, numberOfSensors);
+            }
+        }
+    }
 };
 
 var startSocketIoConnection = function()
@@ -81,7 +167,8 @@ var startSocketIoConnection = function()
   	socket.on('notification', function (data) 
   	{
         showMainWindow();
-        buildGuiBasedOnServerConfiguration(data);
+        var configuration = JSON.parse(data);
+        buildGuiBasedOnServerConfiguration(configuration);
   	});   
 };
 
