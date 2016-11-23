@@ -151,6 +151,11 @@ app.get('/device/*', function (req, res)
 //    socket.emit('notification', configurationDB.getConfigurationArray());
 //});
 
+io.sockets.on('connection', function (socket)
+{
+    socket.emit('notification', configurationDB.getConfigurationJson());
+});
+
 var configurationDB = require('./internal_modules/configurationDB.js');
 configurationDB.getConfigurationArray();
 //console.log(configurationDB.getConfigurationJsonArray());
