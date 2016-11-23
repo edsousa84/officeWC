@@ -79,10 +79,9 @@ var buildSensorAreaContent = function(name, value, gpioType,  numberOfSensors)
             '<div class="col-md-4">' +
                 '<div class="panel panel-danger">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">Panel content default</div>' +
+                    '<div class="panel-body">' + value + '</div>' +
                 '</div>' +
             '</div>';
-
         }
         else if(value == 0)
         {
@@ -90,7 +89,7 @@ var buildSensorAreaContent = function(name, value, gpioType,  numberOfSensors)
             '<div class="col-md-4">' +
                 '<div class="panel panel-success">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">Panel content default</div>' +
+                    '<div class="panel-body">' + value + '</div>' +
                 '</div>' +
             '</div>';
         }
@@ -100,7 +99,7 @@ var buildSensorAreaContent = function(name, value, gpioType,  numberOfSensors)
             '<div class="col-md-4">' +
                 '<div class="panel panel-info">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">Panel content default</div>' +
+                    '<div class="panel-body">' + value + '</div>' +
                 '</div>' +
             '</div>';
         }
@@ -112,6 +111,18 @@ var buildSensorAreaContent = function(name, value, gpioType,  numberOfSensors)
         }
 
     }
+
+    if(gpioType === "analog")
+    {
+        sensor = sensor +
+        '<div class="col-md-4">' +
+            '<div class="panel panel-info">' +
+                '<div class="panel-heading">' + name + '</div>' +
+                '<div class="panel-body">' + value + '</div>' +
+            '</div>' +
+        '</div>';
+    }
+
     $("#sensorAreaContent").append(sensor);
 };
 
