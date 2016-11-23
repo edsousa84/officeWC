@@ -24,8 +24,27 @@
             });
         </script>
 
-        <div class="">
+		<div id="noConnectionWindow" class="">
+            <div class="verticalSpacer10"></div>
+            <div class="container">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <span class="panel-title pull-left">FMQ WC Offline</span>
+                        <div class="pull-right">
+                        </div>
 
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="panel-body">
+                        Connection fell down the toilet..<br>
+                        Just wait for the plumber to fix it whistling the Super Mario tune.<br>
+                    </div>
+                    <!--<div class="panel-footer">Send Button</div>-->
+                </div>
+            </div>
+		</div>
+
+        <div id="mainWindow" class="">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -56,7 +75,8 @@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                         	<li>
-                                <a id="linkAbout" href="#">About <span class="sr-only">(current)</span></a>
+                                <!--<button class="btn btn-primary" data-toggle="modal" data-target="#aboutModal">Large modal</button>-->
+                                <a id="linkAbout" href="#" data-toggle="modal" data-target="#aboutModal">About <span class="sr-only">(current)</span></a>
                             </li>
                             <li>
                                 <a id="linkGithub" href="https://github.com/priestnot/officeWC" target="_blank">Github</a>
@@ -130,6 +150,29 @@
                     <!--<div class="panel-footer">Send Button</div>-->
                 </div>
             </div>
+        </div>
+
+        <!--<button class="btn btn-primary" data-toggle="modal" data-target="#aboutModal">Large modal</button>-->
+        <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">About</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>This project was created by a team of experts in doing stuff</p>
+                        You can check the magical work done by them on github:<br>
+                        <a id="linkGithub" href="https://github.com/priestnot/officeWC" target="_blank">https://github.com/priestnot/officeWC</a>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
         </div>
     </body>
 </html>

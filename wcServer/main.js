@@ -163,6 +163,7 @@ app.get('/info', function (req, res)
 
 io.sockets.on('connection', function (socket)
 {
+	console.log("socketio connection");
     socket.emit('notification', configurationDB.getConfigurationJson());
 });
 

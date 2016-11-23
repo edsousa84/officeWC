@@ -15,6 +15,7 @@ var initGui = function()
         internalModulesInit();
         guiBindingInit();
         resetGui();
+        startSocketIoConnection();
     });
 };
 
@@ -35,7 +36,51 @@ var guiBindingInit = function()
 
 var resetGui = function()
 {
-    randomWallPaper();
+	console.log("resetGUI()");
+	$("#noConnectionWindow").show();
+	$("#mainWindow").hide();
+};
+
+var showMainWindow = function()
+{
+	console.log("showMainWindow()");
+	randomWallPaper();
+	$("#noConnectionWindow").hide();
+	$("#mainWindow").show();
+};
+
+var buildGuiBasedOnServerConfiguration = function(configuration)
+{
+
+};
+
+var startSocketIoConnection = function()
+{
+	var socket = io.connect('http://localhost:8080');
+	
+	socket.on('connect', function (data) 
+  	{
+  		console.log("socketIO Connected");
+  	});
+  	
+  	socket.on('disconnect', function (data) 
+  	{
+	  	console.log("socketIO Disconnected");
+	  	resetGui();
+  	});
+  	
+  	socket.on('error', function (data) 
+  	{
+  		console.log("socketIO error");
+	  	resetGui();
+  	});
+	
+  	socket.on('notification', function (data) 
+  	{
+        showMainWindow();
+        buildGuiBasedOnServerConfiguration(data);
+    	console.log(data);
+  	});   
 };
 
 var randomWallPaper = function()
