@@ -14,6 +14,7 @@ var initGui = function()
         externalModulesInit();
         internalModulesInit();
         guiBindingInit();
+        randomWallPaper();
         resetGui();
         startSocketIoConnection();
     });
@@ -44,14 +45,16 @@ var resetGui = function()
 var showMainWindow = function()
 {
 	console.log("showMainWindow()");
-	randomWallPaper();
 	$("#noConnectionWindow").hide();
 	$("#mainWindow").show();
 };
 
 var buildGuiBasedOnServerConfiguration = function(configuration)
 {
-
+    console.log(configuration);
+    configuration["areas"].forEach(function(area){
+        console.log(area.name);
+    }.bind(this))
 };
 
 var startSocketIoConnection = function()
@@ -79,7 +82,6 @@ var startSocketIoConnection = function()
   	{
         showMainWindow();
         buildGuiBasedOnServerConfiguration(data);
-    	console.log(data);
   	});   
 };
 
