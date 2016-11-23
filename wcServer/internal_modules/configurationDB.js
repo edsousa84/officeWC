@@ -89,7 +89,7 @@ ConfigurationDB.prototype.createEmptyFile = function()
     fs.appendFileSync(this.file, '[]');
 };
 
-ConfigurationDB.prototype.getConfigurationJsonArray = function()
+ConfigurationDB.prototype.getConfigurationJson = function()
 {
     return JSON.stringify(this.configuration, null, 4);
 };
