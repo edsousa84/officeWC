@@ -101,22 +101,22 @@ ConfigurationDB.prototype.getConfigurationArray = function()
 
 ConfigurationDB.prototype.setDeviceIfaceValue = function(mac, iface, value)
 {
-    this.configuration[mac].iface[iface].value = value;
+    this.configuration.devices[mac].iface[iface].value = value;
 };
 
 ConfigurationDB.prototype.getDeviceIfaceValue = function(mac, iface)
 {
-    return this.configuration[mac].iface[iface].value;
+    return this.configuration.devices[mac].iface[iface].value;
 };
 
 ConfigurationDB.prototype.getActuatorsOfSensor = function(mac, iface)
 {
-    return this.configuration[mac].iface[iface].actuators;
+    return this.configuration.devices[mac].iface[iface].actuators;
 };
 
 ConfigurationDB.prototype.setSensorValue = function(mac, iface, value)
 {
-    if(this.configuration[mac].iface[iface].type == "sensor")
+    if(this.configuration.devices[mac].iface[iface].type == "sensor")
     {
         this.setDeviceIfaceValue(mac, iface, value);
         return 1;
@@ -126,7 +126,7 @@ ConfigurationDB.prototype.setSensorValue = function(mac, iface, value)
 
 ConfigurationDB.prototype.setActuatorValue = function(mac, iface, value)
 {
-    if(this.configuration[mac].iface[iface].type == "actuator")
+    if(this.configuration.devices[mac].iface[iface].type == "actuator")
     {
         this.setDeviceIfaceValue(mac, iface, value);
         return 1;
@@ -148,7 +148,7 @@ ConfigurationDB.prototype.setActuatorsValue = function(actuators, value)
 
 ConfigurationDB.prototype.getActuatorValue = function(mac, iface)
 {
-    if(this.configuration[mac].iface[iface].type == "actuator")
+    if(this.configuration.devices[mac].iface[iface].type == "actuator")
     {
         return this.getDeviceIfaceValue(mac, iface);
     }
