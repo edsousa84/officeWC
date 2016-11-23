@@ -1,4 +1,4 @@
-'use strict';
+
 
 var express = require('express');
 
@@ -146,10 +146,20 @@ app.get('/device/*', function (req, res)
 
 });
 
-//io.sockets.on('connection', function (socket)
-//{
-//    socket.emit('notification', configurationDB.getConfigurationArray());
-//});
+app.get('/info', function (req, res)
+{
+    try
+    {
+        res.send(configurationDB.getConfigurationJson());
+    }
+    catch(e)
+    {
+        var error = 'ERROR (uops dont know why but it is a error)';
+        console.log(error);
+        console.log("EXCEPTION CAUGHT: " + e);
+    }
+});
+
 
 io.sockets.on('connection', function (socket)
 {
