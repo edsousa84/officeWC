@@ -52,6 +52,7 @@ var showMainWindow = function()
 var buildAreaLink = function(name)
 {
     var link = "";
+
     link = '<li class="">' +
     '<a id="linkAllArea1" href="#">' + name + '<span class="sr-only">(current)</span></a>' +
     '</li>';
@@ -129,6 +130,9 @@ var buildSensorAreaContent = function(name, value, gpioType,  numberOfSensors)
 var buildGuiBasedOnServerConfiguration = function(configuration)
 {
     //console.log(configuration);
+    $("#areaLinks").html("");
+    $("#sensorAreaContent").html("");
+    
     configuration.areas.forEach(function(area)
     {
         //console.log(area.name);
