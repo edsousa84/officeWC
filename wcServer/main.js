@@ -93,6 +93,7 @@ app.get('/device/*', function (req, res)
             var actuators = configurationDB.getActuatorsOfSensor(mac, iface);
             configurationDB.setActuatorsValue(actuators, value);
             console.log("Value " + value + " was read from sensor: " + mac + " on iface: " + iface);
+            io.emit('notification', configurationDB.getConfigurationJson());
             res.send('OK');
         }
         else if(type == "actuator")
@@ -159,7 +160,6 @@ app.get('/info', function (req, res)
         console.log("EXCEPTION CAUGHT: " + e);
     }
 });
-
 
 io.sockets.on('connection', function (socket)
 {
