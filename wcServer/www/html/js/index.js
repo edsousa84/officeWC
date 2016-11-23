@@ -35,5 +35,11 @@ var guiBindingInit = function()
 
 var resetGui = function()
 {
+    randomWallPaper();
+};
 
+var randomWallPaper = function()
+{
+    var images = ['1', '2', '3', '4', '5'];
+    $('body').css({'background-image': 'url(images/wallpaper/wall_' + images[Math.floor(Math.random() * images.length)] + '.jpg)'});
 };

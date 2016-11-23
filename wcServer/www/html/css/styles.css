@@ -15,8 +15,8 @@ body{
 
 .background
 {
-    background: url('../images/wall.jpg') no-repeat center center fixed;
-    /*background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9) ), url('../images/wall.jpg');*/
+    background: url('../images/wallpaper/wall_5.jpg') no-repeat center center fixed;
+    /*background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9) ), url('../images/wall_5.jpg');*/
 
     -webkit-background-size: cover;
     -moz-background-size: cover;
