@@ -7,13 +7,14 @@
 
 var initGui = function()
 {
-    console.log("initGui");
+    //console.log("initGui");
 
     $(function()
     {
         externalModulesInit();
         internalModulesInit();
         guiBindingInit();
+        randomWallPaper();
         resetGui();
         startSocketIoConnection();
     });
@@ -36,22 +37,179 @@ var guiBindingInit = function()
 
 var resetGui = function()
 {
-	console.log("resetGUI()");
+	//console.log("resetGUI()");
 	$("#noConnectionWindow").show();
 	$("#mainWindow").hide();
 };
 
 var showMainWindow = function()
 {
-	console.log("showMainWindow()");
-	randomWallPaper();
+	//console.log("showMainWindow()");
 	$("#noConnectionWindow").hide();
 	$("#mainWindow").show();
 };
 
+var buildNavBar = function(name, n)
+{
+    var link = "";
+
+    link = link +
+    '<li id="area' + n + '" class="linkNavBar">' +
+        '<a class="" href="#">' + name + '<span class="sr-only">(current)</span></a>' +
+    '</li>';
+
+    $("#navBarLinksArea").append(link);
+};
+
+var buildSensorAreaContent = function(name, value, gpioType, jQueryId)
+{
+    //console.log("name: " + name + " value: " + value + " numberOfSensors: " + numberOfSensors);
+    var sensor = "";
+
+    if(gpioType === "digital")
+    {
+        if(value == 1)
+        {
+            sensor = sensor +
+            '<div class="col-md-4">' +
+                '<div class="panel panel-danger">' +
+                    '<div class="panel-heading">' + name + '</div>' +
+                    '<div class="panel-body">' + value + '</div>' +
+                '</div>' +
+            '</div>';
+        }
+        else if(value == 0)
+        {
+            sensor = sensor +
+            '<div class="col-md-4">' +
+                '<div class="panel panel-success">' +
+                    '<div class="panel-heading">' + name + '</div>' +
+                    '<div class="panel-body">' + value + '</div>' +
+                '</div>' +
+            '</div>';
+        }
+        else
+        {
+            sensor = sensor +
+            '<div class="col-md-4">' +
+                '<div class="panel panel-info">' +
+                    '<div class="panel-heading">' + name + '</div>' +
+                    '<div class="panel-body">' + value + '</div>' +
+                '</div>' +
+            '</div>';
+        }
+    }
+
+    if(gpioType === "analog")
+    {
+        sensor = sensor +
+        '<div class="col-md-4">' +
+            '<div class="panel panel-info">' +
+                '<div class="panel-heading">' + name + '</div>' +
+                '<div class="panel-body">' + value + '</div>' +
+            '</div>' +
+        '</div>';
+    }
+
+    $("#" + jQueryId + "").append(sensor);
+};
+
 var buildGuiBasedOnServerConfiguration = function(configuration)
 {
+    //console.log(configuration);
+    $("#navBarLinksArea").html("");
+    $("#allSensorAreaContent").html("");
 
+    var n = 0;
+    configuration.areas.forEach(function(area)
+    {
+        //console.log(area.name);
+        buildNavBar(area.name, n);
+        n = n + 1;
+    }.bind(this));
+
+    for (var mac in configuration.devices)
+    {
+        for (var iface in configuration.devices[mac].iface)
+        {
+            //console.log(iface, configuration.devices[mac].iface);
+            if(configuration.devices[mac].iface[iface].type === "sensor")
+            {
+                var name = configuration.devices[mac].iface[iface].local;
+                var value = configuration.devices[mac].iface[iface].value;
+                var gpioType = configuration.devices[mac].iface[iface].gpio;
+
+                buildSensorAreaContent(name, value, gpioType, "allSensorAreaContent");
+            }
+        }
+    }
+
+    var m = 0;
+    configuration.areas.forEach(function(area)
+    {
+        var htmlCode = "";
+        $("#" + 'sensor' + m + 'AreaContent').html("");
+
+        htmlCode = htmlCode +
+            '<div id="area' + m + 'Container" class="container active">' +
+                '<div class="panel panel-primary panel-transparent">' +
+                    '<div class="panel-heading">' +
+                        '<span id= "area' + m + 'Header" class="panel-title pull-left">FMQ WC - ' + area.name + '</span>' +
+                        '<div class="pull-right"></div>' +
+                        '<div class="clearfix"></div>' +
+                    '</div>' +
+                    '<div class="panel-body">' +
+                        '<div id="sensor' + m + 'AreaContent"> ' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '';
+
+        $("#mainWindow").append(htmlCode);
+
+
+        area.devices.forEach(function(device)
+        {
+            var mac = device.mac;
+            var iface = device.iface;
+            //console.log("DEVICE = mac: " +  mac + " iface: " + iface);
+
+            if(configuration.devices[mac].iface[iface].type === "sensor")
+            {
+                var name = configuration.devices[mac].iface[iface].local;
+                var value = configuration.devices[mac].iface[iface].value;
+                var gpioType = configuration.devices[mac].iface[iface].gpio;
+
+                buildSensorAreaContent(name, value, gpioType, 'sensor' + m + 'AreaContent');
+            }
+        });
+        m = m + 1;
+    });
+    showTheActiveArea();
+};
+
+var buildActionsToAreaLinks = function(configuration)
+{
+    $('.linkNavBar').each(function()
+    {
+        //console.log($(this).attr('id'));
+        $(this).on('click', function()
+        {
+            //console.log($(this).attr('id'));
+            $(".linkNavBar").removeClass("active");
+            $("#" + $(this).attr('id') + "").addClass("active");
+            showTheActiveArea();
+        })
+    });
+
+};
+
+var showTheActiveArea = function()
+{
+    var activeAreaId = $('.linkNavBar.active').attr('id') + "Container";
+    $(".container").hide();
+    $("#" + activeAreaId).show();
 };
 
 var startSocketIoConnection = function()
@@ -60,26 +218,27 @@ var startSocketIoConnection = function()
 	
 	socket.on('connect', function (data) 
   	{
-  		console.log("socketIO Connected");
+  		//console.log("socketIO Connected");
   	});
   	
   	socket.on('disconnect', function (data) 
   	{
-	  	console.log("socketIO Disconnected");
+	  	//console.log("socketIO Disconnected");
 	  	resetGui();
   	});
   	
   	socket.on('error', function (data) 
   	{
-  		console.log("socketIO error");
+  		//console.log("socketIO error");
 	  	resetGui();
   	});
 	
   	socket.on('notification', function (data) 
   	{
         showMainWindow();
-        buildGuiBasedOnServerConfiguration(data);
-    	console.log(data);
+        var configuration = JSON.parse(data);
+        buildGuiBasedOnServerConfiguration(configuration);
+        buildActionsToAreaLinks(configuration);
   	});   
 };
 

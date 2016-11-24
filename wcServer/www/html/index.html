@@ -39,7 +39,6 @@
                         Connection fell down the toilet..<br>
                         Just wait for the plumber to fix it whistling the Super Mario tune.<br>
                     </div>
-                    <!--<div class="panel-footer">Send Button</div>-->
                 </div>
             </div>
 		</div>
@@ -49,7 +48,7 @@
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
@@ -58,21 +57,24 @@
                         <a class="navbar-brand" href="#">FMQ WC</a>
                     </div>
 
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav">
-                            <li class="active">
+                            <li id="allSensor" class="linkNavBar active">
                                 <a id="linkAllSensors" href="#">All Sensors<span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="">
-                                <a id="linkAllArea1" href="#">Area 1<span class="sr-only">(current)</span></a>
-                            </li>
-                             <li class="">
-                                <a id="linkAllArea2" href="#">Area 2<span class="sr-only">(current)</span></a>
-                            </li>
-                             <li class="">
-                                <a id="linkAllArea3" href="#">Area 3<span class="sr-only">(current)</span></a>
-                            </li>
                         </ul>
+                        <ul id="navBarLinksArea" class="nav navbar-nav">
+                            <!--<li id="area0" class="linkNavBar">-->
+                                <!--<a href="#">Area 1<span class="sr-only">(current)</span></a>-->
+                            <!--</li>-->
+                            <!--<li id="area1" class="linkNavBar">-->
+                                <!--<a href="#">Area 2<span class="sr-only">(current)</span></a>-->
+                            <!--</li>-->
+                            <!--<li id="area3" class="linkNavBar">-->
+                                <!--<a href="#">Area 3<span class="sr-only">(current)</span></a>-->
+                            <!--</li>-->
+                        </ul>
+
                         <ul class="nav navbar-nav navbar-right">
                         	<li>
                                 <!--<button class="btn btn-primary" data-toggle="modal" data-target="#aboutModal">Large modal</button>-->
@@ -95,63 +97,83 @@
 
 
             <div class="verticalSpacer10"></div>
-            <div class="container">
+            <div id="allSensorContainer" class="container active">
                 <div class="panel panel-primary panel-transparent">
                     <div class="panel-heading">
-                        <span class="panel-title pull-left">FMQ WC</span>
+                        <span id= "sensorAreaHeader" class="panel-title pull-left">FMQ WC - All Sensors</span>
                         <div class="pull-right">
                         </div>
 
                         <div class="clearfix"></div>
                     </div>
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">Sensor 1</div>
-                                    <div class="panel-body">Panel content default</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">Sensor 2</div>
-                                    <div class="panel-body">Panel content primary</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel panel-success">
-                                    <div class="panel-heading">Sensor 3</div>
-                                    <div class="panel-body">Panel content success</div>
-                                </div>
-                            </div>
-                        </div>
+                       <div id="allSensorAreaContent">
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-4">-->
+                                    <!--<div class="panel panel-default">-->
+                                        <!--<div class="panel-heading">Sensor 1</div>-->
+                                        <!--<div class="panel-body">Panel content default</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-4">-->
+                                    <!--<div class="panel panel-primary">-->
+                                        <!--<div class="panel-heading">Sensor 2</div>-->
+                                        <!--<div class="panel-body">Panel content primary</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-4">-->
+                                    <!--<div class="panel panel-success">-->
+                                        <!--<div class="panel-heading">Sensor 3</div>-->
+                                        <!--<div class="panel-body">Panel content success</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">Sensor 4</div>
-                                    <div class="panel-body">Panel content info</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel panel-warning">
-                                    <div class="panel-heading">Sensor 5</div>
-                                    <div class="panel-body">Panel content warning</div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="panel panel-danger">
-                                    <div class="panel-heading">Sensor 6</div>
-                                    <div class="panel-body">Panel content danger</div>
-                                </div>
-                            </div>
+                            <!--<div class="row">-->
+                                <!--<div class="col-md-4">-->
+                                    <!--<div class="panel panel-info">-->
+                                        <!--<div class="panel-heading">Sensor 4</div>-->
+                                        <!--<div class="panel-body">Panel content info</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-4">-->
+                                    <!--<div class="panel panel-warning">-->
+                                        <!--<div class="panel-heading">Sensor 5</div>-->
+                                        <!--<div class="panel-body">Panel content warning</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-4">-->
+                                    <!--<div class="panel panel-danger">-->
+                                        <!--<div class="panel-heading">Sensor 6</div>-->
+                                        <!--<div class="panel-body">Panel content danger</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
                         </div>
-                    </div>
-                    <!--<div class="panel-footer">Send Button</div>-->
+                     </div>
+                    <!--<div class="panel-footer">The end</div>-->
                 </div>
             </div>
-        </div>
 
+            <!--<div id="area[n]Container" class="container active">-->
+                <!--<div class="panel panel-primary panel-transparent">-->
+                    <!--<div class="panel-heading">-->
+                        <!--<span id= "area[N]Header" class="panel-title pull-left">FMQ WC - [AREANAME]</span>-->
+                        <!--<div class="pull-right">-->
+                        <!--</div>-->
+
+                        <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <!--<div class="panel-body">-->
+                        <!--<div id="sensor[n]AreaContent">-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<div class="panel-footer">The end</div>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        </div>
         <!--<button class="btn btn-primary" data-toggle="modal" data-target="#aboutModal">Large modal</button>-->
         <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
