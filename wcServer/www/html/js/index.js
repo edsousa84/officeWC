@@ -40,6 +40,7 @@ var resetGui = function()
 	//console.log("resetGUI()");
 	$("#noConnectionWindow").show();
 	$("#mainWindow").hide();
+    $("#allSensor").removeClass("active").addClass("active");
 };
 
 var showMainWindow = function()
@@ -151,7 +152,7 @@ var buildGuiBasedOnServerConfiguration = function(configuration)
         $("#" + 'sensor' + m + 'AreaContent').html("");
 
         htmlCode = htmlCode +
-            '<div id="area' + m + 'Container" class="container active">' +
+            '<div id="area' + m + 'Container" class="container sensorContainer">' +
                 '<div class="panel panel-primary panel-transparent">' +
                     '<div class="panel-heading">' +
                         '<span id= "area' + m + 'Header" class="panel-title pull-left">FMQ WC - ' + area.name + '</span>' +
@@ -208,7 +209,7 @@ var buildActionsToAreaLinks = function(configuration)
 var showTheActiveArea = function()
 {
     var activeAreaId = $('.linkNavBar.active').attr('id') + "Container";
-    $(".container").hide();
+    $(".sensorContainer").hide();
     $("#" + activeAreaId).show();
 };
 
@@ -235,6 +236,7 @@ var startSocketIoConnection = function()
 	
   	socket.on('notification', function (data) 
   	{
+        resetGui();
         showMainWindow();
         var configuration = JSON.parse(data);
         buildGuiBasedOnServerConfiguration(configuration);
