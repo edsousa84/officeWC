@@ -39,7 +39,6 @@
                         Connection fell down the toilet..<br>
                         Just wait for the plumber to fix it whistling the Super Mario tune.<br>
                     </div>
-                    <!--<div class="panel-footer">Send Button</div>-->
                 </div>
             </div>
 		</div>
@@ -60,19 +59,19 @@
 
                     <div class="collapse navbar-collapse" id="navbar">
                         <ul class="nav navbar-nav">
-                            <li id="allSensors" class="active">
+                            <li id="allSensor" class="linkNavBar active">
                                 <a id="linkAllSensors" href="#">All Sensors<span class="sr-only">(current)</span></a>
                             </li>
                         </ul>
-                        <ul id="areaLinks" class="nav navbar-nav">
-                            <!--<li class="">-->
-                                <!--<a id="linkAllArea1" href="#">Area 1<span class="sr-only">(current)</span></a>-->
+                        <ul id="navBarLinksArea" class="nav navbar-nav">
+                            <!--<li id="area0" class="linkNavBar">-->
+                                <!--<a href="#">Area 1<span class="sr-only">(current)</span></a>-->
                             <!--</li>-->
-                            <!--<li class="">-->
-                                <!--<a id="linkAllArea2" href="#">Area 2<span class="sr-only">(current)</span></a>-->
+                            <!--<li id="area1" class="linkNavBar">-->
+                                <!--<a href="#">Area 2<span class="sr-only">(current)</span></a>-->
                             <!--</li>-->
-                            <!--<li class="">-->
-                                <!--<a id="linkAllArea3" href="#">Area 3<span class="sr-only">(current)</span></a>-->
+                            <!--<li id="area3" class="linkNavBar">-->
+                                <!--<a href="#">Area 3<span class="sr-only">(current)</span></a>-->
                             <!--</li>-->
                         </ul>
 
@@ -98,7 +97,7 @@
 
 
             <div class="verticalSpacer10"></div>
-            <div class="container">
+            <div id="allSensorContainer" class="container active">
                 <div class="panel panel-primary panel-transparent">
                     <div class="panel-heading">
                         <span id= "sensorAreaHeader" class="panel-title pull-left">FMQ WC - All Sensors</span>
@@ -108,7 +107,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="panel-body">
-                       <div id="sensorAreaContent">
+                       <div id="allSensorAreaContent">
                             <!--<div class="row">-->
                                 <!--<div class="col-md-4">-->
                                     <!--<div class="panel panel-default">-->
@@ -155,8 +154,26 @@
                     <!--<div class="panel-footer">The end</div>-->
                 </div>
             </div>
-        </div>
 
+            <!--<div id="area[n]Container" class="container active">-->
+                <!--<div class="panel panel-primary panel-transparent">-->
+                    <!--<div class="panel-heading">-->
+                        <!--<span id= "area[N]Header" class="panel-title pull-left">FMQ WC - [AREANAME]</span>-->
+                        <!--<div class="pull-right">-->
+                        <!--</div>-->
+
+                        <!--<div class="clearfix"></div>-->
+                    <!--</div>-->
+                    <!--<div class="panel-body">-->
+                        <!--<div id="sensor[n]AreaContent">-->
+                            <!---->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;<div class="panel-footer">The end</div>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        </div>
         <!--<button class="btn btn-primary" data-toggle="modal" data-target="#aboutModal">Large modal</button>-->
         <div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
