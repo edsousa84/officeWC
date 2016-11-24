@@ -149,10 +149,9 @@
     {
       "name": "Ground 0 Micos",
       "devices": [
-        {"mac": "BA:AD:C0:FE:73:73", "iface": 3},
-        {"mac": "BA:AD:C0:FE:73:73", "iface": 4},
-        {"mac": "BA:AD:C0:FE:73:73", "iface": 5},
-        {"mac": "BA:BE:FA:CE:C0:0F", "iface": 1}
+        {"mac": "BA:AD:C0:FE:73:73", "iface": 1},
+        {"mac": "BA:AD:C0:FE:73:73", "iface": 2},
+        {"mac": "BA:AD:C0:FE:73:73", "iface": 3}
       ]
     }
   ]
