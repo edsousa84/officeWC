@@ -62,7 +62,7 @@ var buildNavBar = function(name, n)
     $("#navBarLinksArea").append(link);
 };
 
-var buildSensorAreaContent = function(name, value, gpioType, jQueryId)
+var buildSensorAreaContent = function(name, value, gpioType, local, jQueryId)
 {
     //console.log("name: " + name + " value: " + value + " numberOfSensors: " + numberOfSensors);
     var sensor = "";
@@ -75,7 +75,10 @@ var buildSensorAreaContent = function(name, value, gpioType, jQueryId)
             '<div class="col-md-4">' +
                 '<div class="panel panel-danger">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">' + value + '</div>' +
+                    '<div class="panel-body">' +
+                        'Value: '+ value + '<br>' +
+                        'Local: ' + local + '<br>' +
+                    '</div>' +
                 '</div>' +
             '</div>';
         }
@@ -85,7 +88,10 @@ var buildSensorAreaContent = function(name, value, gpioType, jQueryId)
             '<div class="col-md-4">' +
                 '<div class="panel panel-success">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">' + value + '</div>' +
+                    '<div class="panel-body">' +
+                        'Value: '+ value + '<br>' +
+                        'Local: ' + local + '<br>' +
+                    '</div>' +
                 '</div>' +
             '</div>';
         }
@@ -95,7 +101,10 @@ var buildSensorAreaContent = function(name, value, gpioType, jQueryId)
             '<div class="col-md-4">' +
                 '<div class="panel panel-info">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">' + value + '</div>' +
+                    '<div class="panel-body">' +
+                        'Value: '+ value + '<br>' +
+                        'Local: ' + local + '<br>' +
+                    '</div>' +
                 '</div>' +
             '</div>';
         }
@@ -136,11 +145,12 @@ var buildGuiBasedOnServerConfiguration = function(configuration)
             //console.log(iface, configuration.devices[mac].iface);
             if(configuration.devices[mac].iface[iface].type === "sensor")
             {
-                var name = configuration.devices[mac].iface[iface].local;
+                var name = configuration.devices[mac].iface[iface].name;
                 var value = configuration.devices[mac].iface[iface].value;
                 var gpioType = configuration.devices[mac].iface[iface].gpio;
+                var local = configuration.devices[mac].iface[iface].local;
 
-                buildSensorAreaContent(name, value, gpioType, "allSensorAreaContent");
+                buildSensorAreaContent(name, value, gpioType, local, "allSensorAreaContent");
             }
         }
     }
@@ -178,11 +188,12 @@ var buildGuiBasedOnServerConfiguration = function(configuration)
 
             if(configuration.devices[mac].iface[iface].type === "sensor")
             {
-                var name = configuration.devices[mac].iface[iface].local;
+                var name = configuration.devices[mac].iface[iface].name;
                 var value = configuration.devices[mac].iface[iface].value;
                 var gpioType = configuration.devices[mac].iface[iface].gpio;
+                var local = configuration.devices[mac].iface[iface].local;
 
-                buildSensorAreaContent(name, value, gpioType, 'sensor' + m + 'AreaContent');
+                buildSensorAreaContent(name, value, gpioType, local, 'sensor' + m + 'AreaContent');
             }
         });
         m = m + 1;

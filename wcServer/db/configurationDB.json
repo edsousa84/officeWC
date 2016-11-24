@@ -8,7 +8,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Sanita pequena",
+          "name": "Sanita pequena",
+          "local": "Ground 0 Casa de banho pequena",
           "actuators": [
             {"mac": "0c:8b:fd:9b:a3:99", "iface": 1},
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 1}
@@ -24,7 +25,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Sanita fundos",
+          "name": "Sanita fundos",
+          "local": "Ground 0 Casa de banho grande",
           "actuators": [
             {"mac": "0c:8b:fd:9b:a3:00", "iface": 2},
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 1}
@@ -40,7 +42,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Mico 1",
+          "name": "Mico 1",
+          "local": "Ground 0 Casa de banho grande",
           "actuators": [
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 3}
           ]
@@ -51,7 +54,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Mico 2",
+          "name": "Mico 2",
+          "local": "Ground 0 Casa de banho grande",
           "actuators": [
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 4}
           ]
@@ -62,7 +66,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Mico 3",
+          "name": "Mico 3",
+          "local": "Ground 0 Casa de banho grande",
           "actuators": [
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 5}
           ]
@@ -77,7 +82,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Trafic Ligth Corredor"
+          "name": "Trafic Ligth Corredor",
+          "local": "Ground 0 Fundo corredor"
         }
       }
     },
@@ -89,7 +95,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Trafic Ligth Pequena"
+          "name": "Trafic Ligth Pequena",
+          "local": "Ground 0 Entrada"
         }
       }
     },
@@ -101,7 +108,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Trafic Ligth General Fundos"
+          "name": "Trafic Ligth General Fundos",
+          "local": "Ground 0 Entrada"
         },
         "2": {
           "type": "actuator",
@@ -109,7 +117,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Trafic Ligth General Pequena"
+          "name": "Trafic Ligth General Pequena",
+          "local": "Ground 0 Entrada"
         },
         "3": {
           "type": "actuator",
@@ -117,7 +126,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Trafic Ligth General Mico 1"
+          "name": "Trafic Ligth General Mico 1",
+          "local": "Ground 0 Entrada"
         },
         "4": {
           "type": "actuator",
@@ -125,7 +135,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Trafic Ligth General Mico 2"
+          "name": "Trafic Ligth General Mico 2",
+          "local": "Ground 0 Entrada"
         },
         "5": {
           "type": "actuator",
@@ -133,7 +144,8 @@
           "value": "0",
           "lastcontime": "2016-11-2 15:30",
           "timeoutTime": "15000",
-          "local": "Trafic Ligth General Mico 3"
+          "name": "Trafic Ligth General Mico 3",
+          "local": "Ground 0 Entrada"
         }
       }
     }
