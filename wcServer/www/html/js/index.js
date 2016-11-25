@@ -40,7 +40,7 @@ var resetGui = function()
 	//console.log("resetGUI()");
 	$("#noConnectionWindow").show();
 	$("#mainWindow").hide();
-    $("#allSensor").removeClass("active").addClass("active");
+    //$("#allSensor").removeClass("active").addClass("active");
 };
 
 var showMainWindow = function()
@@ -127,13 +127,18 @@ var buildSensorAreaContent = function(name, value, gpioType, local, jQueryId)
 var buildGuiBasedOnServerConfiguration = function(configuration)
 {
     //console.log(configuration);
+    var activeAreaId = $(".linkNavBar.active").attr('id');
+    console.log(activeAreaId);
+
     $("#navBarLinksArea").html("");
     $("#allSensorAreaContent").html("");
+    $(".notFixed").remove();
 
     var n = 0;
     configuration.areas.forEach(function(area)
     {
         //console.log(area.name);
+
         buildNavBar(area.name, n);
         n = n + 1;
     }.bind(this));
@@ -162,7 +167,7 @@ var buildGuiBasedOnServerConfiguration = function(configuration)
         $("#" + 'sensor' + m + 'AreaContent').html("");
 
         htmlCode = htmlCode +
-            '<div id="area' + m + 'Container" class="container sensorContainer">' +
+            '<div id="area' + m + 'Container" class="container sensorContainer notFixed">' +
                 '<div class="panel panel-primary panel-transparent">' +
                     '<div class="panel-heading">' +
                         '<span id= "area' + m + 'Header" class="panel-title pull-left">FMQ WC - ' + area.name + '</span>' +
@@ -198,6 +203,18 @@ var buildGuiBasedOnServerConfiguration = function(configuration)
         });
         m = m + 1;
     });
+
+    var activeAreaJqueryObj = $("#" + activeAreaId);
+    if(activeAreaJqueryObj.length == 0)
+    {
+        //just incase some area disapears
+        $("#allSensor").addClass("active");
+    }
+    else
+    {
+        activeAreaJqueryObj.addClass("active");
+    }
+
     showTheActiveArea();
 };
 
