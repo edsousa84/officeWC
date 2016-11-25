@@ -202,4 +202,39 @@ ConfigurationDB.prototype.getSensorsMacs = function()
 
     return result;
 };
+
+ConfigurationDB.prototype.getActuatorIfacesByMac = function(mac)
+{
+    var result = [];
+    for (var interf in this.configuration.devices[mac].iface)
+    {
+        //console.log(mac);
+        if(this.configuration.devices[mac].iface[interf].type == "actuator")
+        {
+            result.push(interf);
+        }
+
+    }
+    return result;
+};
+
+ConfigurationDB.prototype.getActuatorMacs = function()
+{
+    var result = [];
+
+    for (var mac in this.configuration.devices)
+    {
+        //console.log(mac);
+        var ifaces = this.getActuatorIfacesByMac(mac);
+        if(ifaces.length != 0)
+        {
+            result.push(mac);
+        }
+    }
+
+    return result;
+};
+
+
+
 module.exports = new ConfigurationDB();
