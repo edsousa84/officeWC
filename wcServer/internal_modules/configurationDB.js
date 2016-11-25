@@ -29,12 +29,29 @@ function ConfigurationDB()
 {
     this.file = "db/configurationDB.json";
     this.configuration = {};
+}
+
+ConfigurationDB.prototype.setUpConfigurationDB = function(filepath)
+{
+    if(filepath === undefined || filepath === null)
+    {
+        this.file = "db/configurationDB.json";
+    }
+    else
+    {
+        this.file  = filepath;
+    }
+
+
+    this.configuration = {};
 
     console.log("##############" + "# ConfigurationDB #" + "############");
     this.checkDBFile();
     this.readDBFile();
     console.log("##############" + "##############" + "############");
-}
+
+    //console.log(JSON.stringify(this.configuration));
+};
 
 ConfigurationDB.prototype.checkDBFile = function()
 {
@@ -153,5 +170,71 @@ ConfigurationDB.prototype.getActuatorValue = function(mac, iface)
         return this.getDeviceIfaceValue(mac, iface);
     }
 };
+
+ConfigurationDB.prototype.getSensorIfacesByMac = function(mac)
+{
+    var result = [];
+    for (var interf in this.configuration.devices[mac].iface)
+    {
+        //console.log(mac);
+        if(this.configuration.devices[mac].iface[interf].type == "sensor")
+        {
+            result.push(interf);
+        }
+
+    }
+    return result;
+};
+
+ConfigurationDB.prototype.getSensorsMacs = function()
+{
+    var result = [];
+
+    for (var mac in this.configuration.devices)
+    {
+        //console.log(mac);
+        var ifaces = this.getSensorIfacesByMac(mac);
+        if(ifaces.length != 0)
+        {
+            result.push(mac);
+        }
+    }
+
+    return result;
+};
+
+ConfigurationDB.prototype.getActuatorIfacesByMac = function(mac)
+{
+    var result = [];
+    for (var interf in this.configuration.devices[mac].iface)
+    {
+        //console.log(mac);
+        if(this.configuration.devices[mac].iface[interf].type == "actuator")
+        {
+            result.push(interf);
+        }
+
+    }
+    return result;
+};
+
+ConfigurationDB.prototype.getActuatorMacs = function()
+{
+    var result = [];
+
+    for (var mac in this.configuration.devices)
+    {
+        //console.log(mac);
+        var ifaces = this.getActuatorIfacesByMac(mac);
+        if(ifaces.length != 0)
+        {
+            result.push(mac);
+        }
+    }
+
+    return result;
+};
+
+
 
 module.exports = new ConfigurationDB();

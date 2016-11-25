@@ -168,6 +168,7 @@ io.sockets.on('connection', function (socket)
 });
 
 var configurationDB = require('./internal_modules/configurationDB.js');
+configurationDB.setUpConfigurationDB("db/configurationDB.json");
 configurationDB.getConfigurationArray();
 //console.log(configurationDB.getConfigurationJsonArray());
 
