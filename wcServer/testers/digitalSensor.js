@@ -9,6 +9,7 @@ const httpClient = require('http');
 var configurationDB = require('../internal_modules/configurationDB.js');
 configurationDB.setUpConfigurationDB("../db/configurationDB.json");
 configurationDB.getConfigurationArray();
+
 function randDigitalValue()
 {
     var rand = Math.random()*10;
@@ -24,6 +25,7 @@ function randDigitalValue()
 
     return rand;
 }
+
 function sendHttpRequest(mac, iface, value)
 {
     var request = {
@@ -99,6 +101,8 @@ rl.question(question, function(answer){
     console.log("You choose: " + answer);
     chosenMac = answer;
     rl.close();
+
+ ifacesArray = configurationDB.getSensorIfacesByMac(macsArray[chosenMac-1]);
 
     timer = setInterval(function ()
     {
