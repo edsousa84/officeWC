@@ -13,7 +13,17 @@
           "actuators": [
             {"mac": "0c:8b:fd:9b:a3:99", "iface": 1},
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 1}
-          ]
+          ],
+          "htmldata":{
+            "indicator": {
+              "type": "bootstrapToggle",
+              "textTrue": "Occupied",
+              "textFalse": "Free",
+              "toggleWith": "",
+              "toggleWidth": "100",
+              "toggleHeight": "100"
+            }
+          }
         }
       }
     },
@@ -30,7 +40,18 @@
           "actuators": [
             {"mac": "0c:8b:fd:9b:a3:00", "iface": 2},
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 1}
-          ]
+          ],
+          "htmldata":{
+            "indicator": {
+              "type": "image",
+              "imagePathTrue": "./htmlData/occupied.png",
+              "imagePathFalse": "./htmlData/free.png",
+              "imageSize": {
+                "width":"100",
+                "height":"100"
+              }
+            }
+          }
         }
       }
     },
@@ -46,7 +67,18 @@
           "local": "Ground 0 Casa de banho grande",
           "actuators": [
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 3}
-          ]
+          ],
+          "htmldata":{
+            "indicator": {
+              "type": "image",
+              "imagePathTrue": "./htmlData/occupied.png",
+              "imagePathFalse": "./htmlData/free.png",
+              "imageSize": {
+                "width":"100",
+                "height":"100"
+              }
+            }
+          }
         },
         "2": {
           "type": "sensor",
@@ -58,7 +90,18 @@
           "local": "Ground 0 Casa de banho grande",
           "actuators": [
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 4}
-          ]
+          ],
+          "htmldata":{
+            "indicator": {
+              "type": "image",
+              "imagePathTrue": "./htmlData/occupied.png",
+              "imagePathFalse": "./htmlData/free.png",
+              "imageSize": {
+                "width":"100",
+                "height":"100"
+              }
+            }
+          }
         },
         "3": {
           "type": "sensor",
@@ -70,7 +113,18 @@
           "local": "Ground 0 Casa de banho grande",
           "actuators": [
             {"mac": "BA:AD:BA:BE:FA:CE", "iface": 5}
-          ]
+          ],
+          "htmldata":{
+            "indicator": {
+              "type": "image",
+              "imagePathTrue": "./htmlData/occupied.png",
+              "imagePathFalse": "./htmlData/free.png",
+              "imageSize": {
+                "width":"100",
+                "height":"100"
+              }
+            }
+          }
         }
       }
     },

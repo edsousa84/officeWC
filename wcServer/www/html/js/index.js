@@ -62,7 +62,7 @@ var buildNavBar = function(name, n)
     $("#navBarLinksArea").append(link);
 };
 
-var buildSensorAreaContent = function(name, value, gpioType, local, jQueryId)
+var buildSensorAreaContent = function(name, value, gpioType, local, htmlData,  jQueryId)
 {
     //console.log("name: " + name + " value: " + value + " numberOfSensors: " + numberOfSensors);
     var sensor = "";
@@ -75,9 +75,34 @@ var buildSensorAreaContent = function(name, value, gpioType, local, jQueryId)
             '<div class="col-md-4">' +
                 '<div class="panel panel-danger">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">' +
-                        'Value: '+ value + '<br>' +
-                        'Local: ' + local + '<br>' +
+                    '<div class="panel-body">';
+
+            if(htmlData.indicator.type == "image")
+            {
+                var imagePath = htmlData.indicator.imagePathTrue;
+                sensor = sensor +
+                '<div> ' +
+                    '<img src=' + imagePath + ' class="img-rounded center-block" width="' + htmlData.indicator.imageSize.width + '" height="' + htmlData.indicator.imageSize.height + '">' +
+                '</div>'+
+                ''
+            }
+            //else if(htmlData.indicator.type == "bootstrapToggle")
+            //{
+            //    sensor = sensor +
+            //        //'<div class="clearfix"></div>' +
+            //    '<div class="col-md-offset-2 col-md-8"> ' +
+            //        '<input disabled type="checkbox" data-width="' + htmlData.indicator.toggleWidth + '" data-height="' + htmlData.indicator.toggleHeight + '" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="' + htmlData.indicator.textTrue + '" data-off="' + htmlData.indicator.textFalse + '" class="bootstrapToggle">' +
+            //    '</div>'
+            //}
+            else
+            {
+                sensor = sensor +
+                'Value: '+ value + '<br>' +
+                'Local: ' + local + '<br>';
+            }
+
+
+            sensor = sensor +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -88,9 +113,34 @@ var buildSensorAreaContent = function(name, value, gpioType, local, jQueryId)
             '<div class="col-md-4">' +
                 '<div class="panel panel-success">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">' +
-                        'Value: '+ value + '<br>' +
-                        'Local: ' + local + '<br>' +
+                    '<div class="panel-body">';
+
+
+            if(htmlData.indicator.type == "image")
+            {
+                var imagePath = htmlData.indicator.imagePathFalse;
+                sensor = sensor +
+                '<div> ' +
+                    '<img src=' + imagePath + ' class="img-rounded center-block" width="' + htmlData.indicator.imageSize.width + '" height="' + htmlData.indicator.imageSize.height + '">' +
+                '</div>'+
+                ''
+            }
+            //else if(htmlData.indicator.type == "bootstrapToggle")
+            //{
+            //    sensor = sensor +
+            //        //'<div class="clearfix"></div>' +
+            //    '<div class="col-md-offset-2 col-md-8"> ' +
+            //    '<input checked disabled type="checkbox" data-width="' + htmlData.indicator.toggleWidth + '" data-height="' + htmlData.indicator.toggleHeight + '" data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="' + htmlData.indicator.textTrue + '" data-off="' + htmlData.indicator.textFalse + '" class="bootstrapToggle">' +
+            //    '</div>'
+            //}
+            else
+            {
+                sensor = sensor +
+                'Value: '+ value + '<br>' +
+                'Local: ' + local + '<br>';
+            }
+
+            sensor = sensor +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -101,9 +151,13 @@ var buildSensorAreaContent = function(name, value, gpioType, local, jQueryId)
             '<div class="col-md-4">' +
                 '<div class="panel panel-info">' +
                     '<div class="panel-heading">' + name + '</div>' +
-                    '<div class="panel-body">' +
-                        'Value: '+ value + '<br>' +
-                        'Local: ' + local + '<br>' +
+                        '<div class="panel-body">';
+
+            sensor = sensor +
+                            'Value: '+ value + '<br>' +
+                            'Local: ' + local + '<br>';
+
+            sensor = sensor +
                     '</div>' +
                 '</div>' +
             '</div>';
@@ -122,13 +176,15 @@ var buildSensorAreaContent = function(name, value, gpioType, local, jQueryId)
     }
 
     $("#" + jQueryId + "").append(sensor);
+
+    $('.bootstrapToggle').bootstrapToggle();
 };
 
 var buildGuiBasedOnServerConfiguration = function(configuration)
 {
     //console.log(configuration);
     var activeAreaId = $(".linkNavBar.active").attr('id');
-    console.log(activeAreaId);
+    //console.log(activeAreaId);
 
     $("#navBarLinksArea").html("");
     $("#allSensorAreaContent").html("");
@@ -154,8 +210,9 @@ var buildGuiBasedOnServerConfiguration = function(configuration)
                 var value = configuration.devices[mac].iface[iface].value;
                 var gpioType = configuration.devices[mac].iface[iface].gpio;
                 var local = configuration.devices[mac].iface[iface].local;
+                var htmlData = configuration.devices[mac].iface[iface].htmldata;
 
-                buildSensorAreaContent(name, value, gpioType, local, "allSensorAreaContent");
+                buildSensorAreaContent(name, value, gpioType, local, htmlData, 'allSensorAreaContent');
             }
         }
     }
@@ -197,8 +254,9 @@ var buildGuiBasedOnServerConfiguration = function(configuration)
                 var value = configuration.devices[mac].iface[iface].value;
                 var gpioType = configuration.devices[mac].iface[iface].gpio;
                 var local = configuration.devices[mac].iface[iface].local;
+                var htmlData = configuration.devices[mac].iface[iface].htmldata;
 
-                buildSensorAreaContent(name, value, gpioType, local, 'sensor' + m + 'AreaContent');
+                buildSensorAreaContent(name, value, gpioType, local, htmlData, 'sensor' + m + 'AreaContent');
             }
         });
         m = m + 1;
