@@ -115,7 +115,7 @@ rl.question(question, function(answer){
             });
         });
         console.log("");
-    }, 1000);
+    }, 5000);
 });
 
 

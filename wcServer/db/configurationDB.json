@@ -16,12 +16,13 @@
           ],
           "htmldata":{
             "indicator": {
-              "type": "bootstrapToggle",
-              "textTrue": "Occupied",
-              "textFalse": "Free",
-              "toggleWith": "",
-              "toggleWidth": "100",
-              "toggleHeight": "100"
+              "type": "image",
+              "imagePathTrue": "./htmlData/occupied.png",
+              "imagePathFalse": "./htmlData/free.png",
+              "imageSize": {
+                "width":"100",
+                "height":"100"
+              }
             }
           }
         }

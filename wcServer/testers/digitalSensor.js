@@ -115,7 +115,7 @@ rl.question(question, function(answer){
             sendHttpRequest(macsArray[chosenMac-1], iface, digitalValue);
         });
         console.log("");
-    }, 1000);
+    }, 5000);
 });
 
 
