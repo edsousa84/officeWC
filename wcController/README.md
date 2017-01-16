@@ -1,7 +1,7 @@
 # GET STARTED: NodeMCU #
 
 On this segment you will be told about the first steps on getting started with NodeMCU, from flashing the micro controller to start using it in your IoT amazing project.
-(You can also find a server side tutorial in here [GET STARTED: Node server](../wcServer/README.md)).
+(You can also find a server side tutorial in here: [GET STARTED: Node server](../wcServer/README.md)).
 
 ## How to Install Esptool and flash nodeMCU ##
 
@@ -43,7 +43,8 @@ There is a nice tutorial in [here](https://odd-one-out.serek.eu/esp8266-nodemcu-
 
 The ESP8266 with the NodeMCU firmware executes Lua files. When booting the device it will look for a file called init.lua and execute this file. But first we will clear the device of every file
 
-1) In ESPlorer, click the format button to delete all files
+1) In ESPlorer, click the format button to delete all files.
+
 2) Next copy / paste the following code into the left hand box in ESPlorer.
 
     
