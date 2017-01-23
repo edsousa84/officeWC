@@ -5,7 +5,7 @@ On this segment you will be told about the first steps on getting started with N
 
 ## How to Install Esptool and flash nodeMCU ##
 
-The following toturial e based on the official one that you can find [here](https://nodemcu.readthedocs.io/en/master/en/flash/) and some of.
+The following tutorial is based on the official NodeMCU documentation which you can find [here](https://nodemcu.readthedocs.io/en/master/en/flash/).
 
 First of all we need to **install Python**: 
 
@@ -31,7 +31,7 @@ Follows the best part of this tutorial, where you start playing with the micro.
 
 ## Programming NodeMCU and Lua.init ##
 
-We need just one more tool in order to programme and upload the files to the NodeMC, ESPlorer.
+We need just one more tool in order to program and upload the files to the NodeMC, ESPlorer.
 
 ESPlorer is the essential multiplatforms tools for any ESP8266 developer from luatool author’s, you can download it [here](https://github.com/4refr0nt/ESPlorer) or find it 
 
