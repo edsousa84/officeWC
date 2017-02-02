@@ -1,7 +1,7 @@
 # GET STARTED: NodeMCU #
 
 On this segment you will be told about the first steps on getting started with NodeMCU, from flashing the micro controller to start using it in your IoT amazing project.
-(You can also find a server side tutorial in here: [GET STARTED: Node server](../wcServer/README.md)).
+(You can also find a server side tutorial in here: [GET STARTED: Node server](../wcServer)).
 
 ## How to Install Esptool and flash nodeMCU ##
 

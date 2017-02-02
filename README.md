@@ -20,8 +20,8 @@ Server Side:
 
 # GET STARTED: Node server #
 
-[GET STARTED: Node server](wcServer/README.md)
+[GET STARTED: Node server](wcServer)
 
 # GET STARTED: NodeMCU #
 
-[GET STARTED: NodeMCU](wcController/README.md)
+[GET STARTED: NodeMCU](wcController)

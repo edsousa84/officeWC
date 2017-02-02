@@ -11,4 +11,4 @@ The server is capable of receive data from digital or analogic sensores or actua
     https://howtonode.org/how-to-install-nodejs
 
 
-(You can also find a server side tutorial here: [GET STARTED: NodeMCU](../wcController/README.md).)
+(You can also find a server side tutorial here: [GET STARTED: NodeMCU](../wcController).)
