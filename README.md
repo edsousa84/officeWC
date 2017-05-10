@@ -6,14 +6,17 @@ Server Side:
  - Web pop-up warning on WC availability
  - Search tools on website
  - Add admin mode (allowed to config JASON's , etc )
- - Support Analogic Sensors 
-  
- Controller Side: 
- - Support Analogic Sensors 
- - Migrate controller to C/Python language 
+ - Support Analogic Sensors
+ - Support to battery level access
+
+ Controller Side:
+ - Support Analogic Sensors
+ - Migrate controller to C/Python language
  - Fix sleep state problem (currently can't hold IO state on reset)
  - Support WPS (sync)
  - Broadcast IP (avoiding hardcoded IP)
+
+ - Server off-interval signal (turn on night mode sleep) and good-morning signal (turn on normal mode sleep)
 
 (Push your ideas )
 
